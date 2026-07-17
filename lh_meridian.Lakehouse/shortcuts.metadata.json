@@ -1,0 +1,14 @@
+[
+  {
+    "name": "product_shared",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dbo/bronze_products",
+        "itemId": "f66abb54-2fc6-49a5-89ff-f3eec0c56481",
+        "workspaceId": "f981315a-2ccf-41d8-87fb-8e866c333191"
+      }
+    }
+  }
+]
