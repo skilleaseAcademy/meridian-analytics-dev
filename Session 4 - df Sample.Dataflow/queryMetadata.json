@@ -1,0 +1,34 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "Session 4 - df Sample",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "products": {
+      "queryId": "8e5cab33-0a82-4bcd-b27a-27d5065904a2",
+      "queryName": "products",
+      "loadEnabled": false
+    },
+    "products_DataDestination": {
+      "queryId": "9c92b66b-1620-4189-90c2-cfc8da9c8b41",
+      "queryName": "products_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "https://raw.githubusercontent.com/skilleaseAcademy/fabric-data-days/refs/heads/main/products.csv",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"eb0017e3-5c8f-474d-9258-a79b95384411\",\"DatasourceId\":\"54c43309-fda5-42bb-9531-43589e449dae\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"eb0017e3-5c8f-474d-9258-a79b95384411\",\"DatasourceId\":\"12ad864e-d4bc-4103-a9fc-60d86bfd28aa\"}"
+    }
+  ]
+}
