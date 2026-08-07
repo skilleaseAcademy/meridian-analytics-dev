@@ -3,6 +3,7 @@ CREATE TABLE [dbo].[dim_date] (
 	[date_key] int NOT NULL, 
 	[date] date NULL, 
 	[year] int NULL, 
+	[year-mm] varchar(35) NULL, 
 	[quarter] int NULL, 
 	[quarter_label] varchar(8) NULL, 
 	[month_number] int NULL, 

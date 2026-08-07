@@ -1,0 +1,76 @@
+table _Measure
+	lineageTag: 986eac3a-7f14-45f5-99a7-54ad4d3f7d09
+
+	measure 'Net Sales' = CALCULATE(SUM(fact_sales[net_amount]), fact_sales[order_status] ="Completed")
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a4e5f9fa-3758-4544-a6bf-8603b450a894
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Orders' = CALCULATE(DISTINCTCOUNT(fact_sales[order_id]), fact_sales[order_status] = "Completed")
+		formatString: 0
+		lineageTag: 5539cf03-8ee6-4f10-b282-38b99b625141
+
+	measure 'Avg Order Value' = DIVIDE([Net Sales],[Total Orders])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: e9ffb9ac-f213-4d42-adf8-10ec6d678227
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure Margin = CALCULATE(SUM(fact_sales[margin]), fact_sales[order_status]="Completed")
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: f4d402c5-22b8-4804-a1ba-afe55d984352
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Margin %' = ```
+			DIVIDE([Margin],[Net Sales])   
+			```
+		lineageTag: 11102243-0729-4bd1-a3a4-ecb968079f8f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Return Rate %' =
+			DIVIDE(
+			                        CALCULATE(COUNTROWS(fact_sales), fact_sales[order_status] = "Returned"),
+			                        COUNTROWS(fact_sales)
+			)
+		lineageTag: 542dd354-29e4-442e-9d9b-87e472606944
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Net Sales YTD' = TOTALYTD([Net Sales], dim_date[date], "6/30")
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 6bfec2f0-49ea-4c17-9598-4ed48e44c2fb
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Net Sales PY' = CALCULATE([Net Sales], SAMEPERIODLASTYEAR(dim_date[date]))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: e61527b7-87b2-4b0b-9f30-c7789f707bf6
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Net Sales YoY %' = DIVIDE([Net Sales] - [Net Sales PY], [Net Sales PY])
+		lineageTag: 0d425d8d-0676-44d5-994d-5bf9f2029604
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column1
+		dataType: string
+		lineageTag: a0df0ffe-d8d5-4a3e-9cd3-dbc45bb24f73
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measure = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t])
+				in
+				  Source
+
+	annotation PBI_ResultType = Table
+

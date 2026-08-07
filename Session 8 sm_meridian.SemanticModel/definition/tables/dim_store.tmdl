@@ -1,0 +1,76 @@
+table dim_store
+	lineageTag: 09797ee0-b0af-4280-a78f-bc1f7410d776
+	sourceLineageTag: [dbo].[dim_store]
+
+	column store_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d0e8a8a-21e4-43d3-b43f-8d93570b2e57
+		sourceLineageTag: store_key
+		summarizeBy: none
+		sourceColumn: store_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 40fc1589-bdc0-4070-a889-5953acd762e1
+		sourceLineageTag: store_id
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_code
+		dataType: string
+		lineageTag: b7b9182d-bb54-49ba-9c7c-da008f283e4c
+		sourceLineageTag: store_code
+		summarizeBy: none
+		sourceColumn: store_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_name
+		dataType: string
+		lineageTag: f7d84f00-6a1d-46e0-b72c-5acc7bc7d0c1
+		sourceLineageTag: store_name
+		summarizeBy: none
+		sourceColumn: store_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 88d617cc-09dd-4039-8279-7849106ba70d
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: ae5a1915-7b19-4d9b-9452-56351860bf1e
+		sourceLineageTag: region
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_type
+		dataType: string
+		lineageTag: b528e7dd-2ec0-439a-a8ef-2996ca887d9f
+		sourceLineageTag: store_type
+		summarizeBy: none
+		sourceColumn: store_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_store = entity
+		mode: directLake
+		source
+			entityName: dim_store
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_meridian'
+

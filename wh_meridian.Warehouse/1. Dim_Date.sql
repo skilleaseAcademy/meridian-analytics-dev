@@ -20,6 +20,7 @@ SELECT
     ISNULL(CAST(CONVERT(varchar(8), d, 112) AS INT), 0)           AS date_key,      -- 20260730
     d                                                             AS [date],
     YEAR(d)                                                       AS [year],
+    CAST(YEAR(d) AS VARCHAR(4)) +'-' + CAST(MONTH(d) AS VARCHAR)  AS [year-mm],
     DATEPART(quarter, d)                                          AS [quarter],
     -- FABRIC WAREHOUSE RULE: nvarchar is NOT supported. DATENAME() (and some
     -- string builders) return nvarchar, so every constructed string in a CTAS

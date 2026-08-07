@@ -1,0 +1,104 @@
+table dim_customer
+	lineageTag: f81a028b-2666-4ae4-b966-c5e3f4c66e91
+	sourceLineageTag: [dbo].[dim_customer]
+
+	column customer_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e19a681-6e9a-4def-a9d9-882f854062f5
+		sourceLineageTag: customer_key
+		summarizeBy: none
+		sourceColumn: customer_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 80ad9607-a75b-4eb9-81d3-17d8f074d688
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_code
+		dataType: string
+		lineageTag: 842fca34-ed64-47ed-9ac8-488bc0ce21fe
+		sourceLineageTag: customer_code
+		summarizeBy: none
+		sourceColumn: customer_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_name
+		dataType: string
+		lineageTag: 5128544d-ae04-40ff-86b5-ffa276a41555
+		sourceLineageTag: first_name
+		summarizeBy: none
+		sourceColumn: first_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_name
+		dataType: string
+		lineageTag: 172dc595-057a-4860-b0c9-f3456c307ff6
+		sourceLineageTag: last_name
+		summarizeBy: none
+		sourceColumn: last_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		lineageTag: 7c63322b-5c6e-4a57-9d52-eff6d1be2912
+		sourceLineageTag: segment
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column preferred_channel
+		dataType: string
+		lineageTag: de54419f-7236-43a8-aa70-1991929e1d94
+		sourceLineageTag: preferred_channel
+		summarizeBy: none
+		sourceColumn: preferred_channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column home_region
+		dataType: string
+		lineageTag: ff3bea3d-59eb-464b-b0d1-fd5aef4a0e9b
+		sourceLineageTag: home_region
+		summarizeBy: none
+		sourceColumn: home_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_band
+		dataType: string
+		lineageTag: 2a37deab-3120-4f10-81ef-772d56d25587
+		sourceLineageTag: age_band
+		summarizeBy: none
+		sourceColumn: age_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_churned
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1fcabb48-538d-49f8-b408-0e5dca82b91f
+		sourceLineageTag: is_churned
+		summarizeBy: none
+		sourceColumn: is_churned
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customer = entity
+		mode: directLake
+		source
+			entityName: dim_customer
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_meridian'
+

@@ -229,6 +229,20 @@
             ]
           },
           {
+            "name": "year-mm",
+            "dataType": "string",
+            "sourceColumn": "year-mm",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "year-mm",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
             "name": "quarter",
             "dataType": "int64",
             "sourceColumn": "quarter",

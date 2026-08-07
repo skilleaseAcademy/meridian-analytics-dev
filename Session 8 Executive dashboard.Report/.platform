@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Session 8 Executive dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5dc0c7d4-b291-82f6-463f-97812087a631"
+  }
+}
